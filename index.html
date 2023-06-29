@@ -67,11 +67,11 @@
             margin:0%;
         }
         /* html code settings for margins specifically */
-        p{
+        p#video{
             margin:0%;
             height:100%;
             border: none;
-            background-color: black;
+            background-color: ghostwhite;
         }
         .header_phone{
             font-weight: bolder;
@@ -131,11 +131,13 @@
                 border-bottom-style: solid; border-color: black;
             }
         }
-        .dark-mode {
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
             .channel_list button{background-color: black; color: white;}
             .header{background-color: black; color: white; border-color: white;}
             .channel_list{background-color: grey; border-color: white;}
-		}
+            p#video{background-color: black;}
+        }
     </style>
 
     <script>
@@ -149,10 +151,6 @@
             document.getElementById("title").innerHTML = channel_name;
             /* document.getElementsByClassName("UnMute")[0].click(); */
         }
-        function darkMode() {
-			var element = document.body;
-			element.classList.toggle("dark-mode");
-		}
     </script>
 
     <div class="header" id="channel_name">TV</div> <!-- header title --> 
@@ -162,7 +160,6 @@
         <div class="channel_list">
             <!-- title of currently playing channel name for phone screen in landscape mode -->
             <div class="header_phone" id="channel_name_mini">TV</div>
-            <button onclick="darkMode()">( ͡° ͜ʖ ͡° )</button>
             <!-- channels in alphabetical order -->
             <button onclick="myFunction('https://daddylivehd.sx/embed/stream-360.php','5 USA Channel')">5 USA Channel</button>
             <button onclick="myFunction('https://daddylivehd.sx/embed/stream-302.php','A&E')">A&E</button>
