@@ -6,7 +6,7 @@
     <style>
         /* general html settings */
         html{
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif; 
         }
         /* padding for elements */
         * {
@@ -16,31 +16,29 @@
         body{
             height: 92vh;
             width: 100vw;
-            background-color: rgb(0, 0, 0);
-            color:white;
             overflow:hidden;
             margin:0%;
         }
         /* header settings */
         .header{
-            background-color: rgb(20, 25, 25);
             height: 8vh;
             width: 100vw;
             font-size: xx-large;
             font-weight: bolder;
             padding: 1%;
             border-bottom-style: solid;
-            border-color: black;
+            border-color: grey;
+            background-color: ghostwhite;
         }
         /* channel list settings */
         .channel_list {
-            background-color:rgb(37, 38, 39);
             height:100%;
             width: 15%;
             float: left;
             overflow-y: auto;
             border-right-style: solid;
-            border-color: black;
+            border-color: grey;
+            background-color: ghostwhite;
         }
         /* disable scrollbar but keep functionality */
         .channel_list::-webkit-scrollbar {
@@ -51,20 +49,17 @@
             width:100%;
             padding: 8px; /* height of buttons */
             margin-bottom: 5px; /* distance between buttons */
-            background-color: #232323;
-            color: white;
             border: 0;
             font-size: large;
+            background-color: lightgray;
             box-shadow: 0 3px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
         /* button hover settings */
         .channel_list button:hover {
-            background-color: #505050;
             font-weight: bolder;
         }
         /* video section properties */
         iframe {
-            background-color: rgb(0, 0, 0);
             height:100%;
             width: 85%;
             float: left;
@@ -74,12 +69,11 @@
         /* html code settings for margins specifically */
         p{
             margin:0%;
-            background-color: rgb(0, 0, 0);
             height:100%;
             border: none;
+            background-color: black;
         }
         .header_phone{
-            background-color: rgb(20, 25, 25);
             font-weight: bolder;
             padding: 1%;
             font-size: medium;
@@ -137,11 +131,17 @@
                 border-bottom-style: solid; border-color: black;
             }
         }
+        .dark-mode {
+            .channel_list button{background-color: black; color: white;}
+            .header{background-color: black; color: white; border-color: white;}
+            .channel_list{background-color: grey; border-color: white;}
+		}
     </style>
 
     <script>
         var src_start = '<iframe src="';
         var src_end = '" name="iframe_a" allowfullscreen="yes"></iframe>';
+        
         function myFunction(src, channel_name) {
             document.getElementById("video").innerHTML = src_start+src+src_end;
             document.getElementById("channel_name").innerHTML = channel_name;
@@ -149,16 +149,20 @@
             document.getElementById("title").innerHTML = channel_name;
             /* document.getElementsByClassName("UnMute")[0].click(); */
         }
+        function darkMode() {
+			var element = document.body;
+			element.classList.toggle("dark-mode");
+		}
     </script>
 
-    <div class="header" id="channel_name">TV</div>
-    <title id="title">TV</title>
+    <div class="header" id="channel_name">TV</div> <!-- header title --> 
+    <title id="title">TV</title> <!-- tab title -->
 
     <body>
         <div class="channel_list">
             <!-- title of currently playing channel name for phone screen in landscape mode -->
             <div class="header_phone" id="channel_name_mini">TV</div>
-
+            <button onclick="darkMode()">( ͡° ͜ʖ ͡° )</button>
             <!-- channels in alphabetical order -->
             <button onclick="myFunction('https://daddylivehd.sx/embed/stream-360.php','5 USA Channel')">5 USA Channel</button>
             <button onclick="myFunction('https://daddylivehd.sx/embed/stream-302.php','A&E')">A&E</button>
